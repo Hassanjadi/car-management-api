@@ -9,9 +9,9 @@
 6. Menggunakan TypeScript sebagai bahasa pemrograman
 
 ## Done
-- [ ] Membuat database dengan menggunakan SQL hingga melakukan CRUD data
-- [ ] Mampu menerapkan Service Repository Pattern di dalam sebuah Project
-- [ ] Mampu membuat asynchronous function dan menjalankannya
+- [X] Membuat database dengan menggunakan SQL hingga melakukan CRUD data
+- [X] Mampu menerapkan Service Repository Pattern di dalam sebuah Project
+- [X] Mampu membuat asynchronous function dan menjalankannya
 - [ ] Mampu menerapkan Token Based Authentication sebagai metode autentikasi di dalam REST API
 - [ ] Mampu membuat Open API Documentation dari REST API yang akan dibuat
 - [X] Menggunakan TypeScript sebagai bahasa pemrograman
@@ -26,7 +26,7 @@
 | 1  | /api/v1/cars                        | POST      | Adding Cars                              |
 | 2  | /api/v1/cars                        | GET       | Getting Cars                             |
 | 3  | /api/v1/cars/:id                    | GET       | Getting Specified Cars                   |
-| 4  | /api/v1/cars/:id                    | PATCH     | Update Cars                              |
+| 4  | /api/v1/cars/:id                    | PUT       | Update Cars                              |
 | 5  | /api/v1/cars/:id                    | DELETE    | Delete car                               |
 
 ## Postman Test

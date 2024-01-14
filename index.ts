@@ -1,9 +1,9 @@
-import carsRoutes from './routes/carsRoutes';
+import carRoutes from './routes/carRoutes';
+import userRoutes from './routes/userRoutes';
 import { Model } from "objection";
 import express  from 'express';
 import cors from 'cors';
 import knex from 'knex';
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -21,7 +21,8 @@ Model.knex(knexInstance);
 app.use(express.json());
 app.use(cors());
 
-app.use(carsRoutes);
+app.use(carRoutes);
+app.use(userRoutes);
 
 app.listen(PORT, () => {
   console.log(`⚡️ Server is running on port ${PORT}`);

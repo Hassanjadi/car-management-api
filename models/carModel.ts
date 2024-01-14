@@ -1,6 +1,6 @@
 import { Model, ModelObject } from 'objection';
 
-export class carsModel extends Model {
+export class carModel extends Model {
     id!: string;
     plate!: string;
     manufacture!: string;
@@ -20,8 +20,8 @@ export class carsModel extends Model {
     updated_at!: Date;
 
     static get tableName() {
-        return 'cars';
+        return 'car';
     }
 }
 
-export type Cars = ModelObject<carsModel>;
+export type Cars = ModelObject<carModel>;

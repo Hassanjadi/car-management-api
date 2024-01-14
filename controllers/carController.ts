@@ -1,11 +1,11 @@
-import carsService from '../services/carsServices'
+import carService from '../services/carServices'
 import { Request, Response } from 'express';
 import path from 'path';
 
 export const getAllCars = async (req: Request, res: Response) => {
   try {
-    const cars = await carsService.getAllCars();
-    res.json(cars);
+    const car = await carService.getAllCars();
+    res.json(car);
   } catch (error) {
     res.status(500).json({ error: "error message" });
   }
@@ -13,9 +13,9 @@ export const getAllCars = async (req: Request, res: Response) => {
 
 export const getCarsById = async (req: Request, res: Response) => {
   try {
-    const cars = await carsService.getCarsById(req.params.id);
-    if (cars) {
-      res.json(cars);
+    const car = await carService.getCarsById(req.params.id);
+    if (car) {
+      res.json(car);
     } else {
       res.status(404).json({ message: 'Car not found' });
     }
@@ -31,10 +31,10 @@ export const createCars = async (req: Request, res: Response) => {
     }
 
     const imagePath = path.join('/images', req.file.filename);
-    const CarsData = { ...req.body, image: imagePath };
+    const CarData = { ...req.body, image: imagePath };
 
-    const cars = await carsService.createCars(CarsData);
-    return res.status(201).json(cars);
+    const car = await carService.createCars(CarData);
+    return res.status(201).json(car);
   } catch (error) {
     return res.status(500).json({ error: "error message" });
   }
@@ -42,16 +42,16 @@ export const createCars = async (req: Request, res: Response) => {
 
 export const updateCars = async (req: Request, res: Response) => {
   try {
-    const carsId = req.params.id ;
+    const carId = req.params.id ;
 
     if (!req.file) {
       return res.status(400).json({ error: 'No file uploaded' });
     }
 
     const imagePath = path.join('/images', req.file.filename);
-    const CarsData = { ...req.body, image: imagePath };
+    const CarData = { ...req.body, image: imagePath };
 
-    const updatedCar = await carsService.updateCars(carsId, CarsData);
+    const updatedCar = await carService.updateCars(carId, CarData);
 
     if (updatedCar) {
       return res.json(updatedCar);
@@ -66,8 +66,8 @@ export const updateCars = async (req: Request, res: Response) => {
 
 export const deleteCars = async (req: Request, res: Response) => {
   try {
-    const cars = await carsService.deleteCars(req.params.id);
-    if (cars) {
+    const car = await carService.deleteCars(req.params.id);
+    if (car) {
       res.json({ message: 'Car deleted successfully' });
     } else {
       res.status(404).json({ message: 'Car not found' });

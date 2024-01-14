@@ -6,11 +6,11 @@ import {
   createCars,
   updateCars,
   deleteCars
-} from '../controllers/carsControllers';
-
+} from '../controllers/carController';
 
 const router = express.Router();
 
+// Router car
 router.get('/api/v1/cars', getAllCars);
 router.get('/api/v1/cars/:id', getCarsById);
 router.post('/api/v1/cars', upload.single('image'), createCars);

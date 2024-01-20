@@ -1,17 +1,17 @@
-import { userModel } from '../models/userModels'
+import { userModel, User } from '../models/userModels'
 
 class userRepository {
-      createUser(userData: Partial<userModel>) {
-        return userModel.query().insert(userData);
-      }
-    
-      getUserByUsername(username: string) {
-        return userModel.query().findOne({ username });
-      }
+  getAllUser() {
+    return userModel.query();
+  }
 
-      getUserByEmail(email: string) {
-        return userModel.query().findOne({ email });
-      }
+  createUser(userData: Partial<User>) {
+    return userModel.query().insert(userData);
+  }
+
+  getUserByEmail(email: string) {
+    return userModel.query().findOne({ email });
+  }
 }
 
 export default new userRepository();

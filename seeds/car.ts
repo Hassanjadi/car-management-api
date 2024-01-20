@@ -34,7 +34,9 @@ export async function seed(knex: Knex): Promise<void> {
                 "Air conditioning w/in-cabin microfilter",
                 "Body color folding remote-controlled pwr mirrors",
                 "Dual-stage front airbags w/occupant classification system"
-            ]
+            ],
+            createdBy: "26634b5d-e911-43c9-9555-d21672e5a101",
+            updatedBy: "26634b5d-e911-43c9-9555-d21672e5a101",
         }
     ]);
 };

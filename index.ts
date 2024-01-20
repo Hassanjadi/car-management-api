@@ -4,8 +4,12 @@ import { Model } from "objection";
 import express  from 'express';
 import cors from 'cors';
 import knex from 'knex';
+import dotenv from 'dotenv';
+
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+dotenv.config();
 
 const knexInstance = knex({
   client: 'postgresql',

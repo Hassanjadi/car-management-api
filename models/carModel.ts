@@ -16,8 +16,9 @@ export class carModel extends Model {
     year!: number;
     options!: string[];
     specs!: string[];
-    created_at!: Date;
-    updated_at!: Date;
+    createdBy!: string;
+    updatedBy!: string;
+    deletedBy!: string;
 
     static get tableName() {
         return 'car';

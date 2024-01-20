@@ -7,7 +7,7 @@ export const getAllCars = async (req: Request, res: Response) => {
     const car = await carService.getAllCars();
     res.json(car);
   } catch (error) {
-    res.status(500).json({ error: "error message" });
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -20,7 +20,7 @@ export const getCarsById = async (req: Request, res: Response) => {
       res.status(404).json({ message: 'Car not found' });
     }
   } catch (error) {
-    res.status(500).json({ error: "error message" });
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -36,7 +36,7 @@ export const createCars = async (req: Request, res: Response) => {
     const car = await carService.createCars(CarData);
     return res.status(201).json(car);
   } catch (error) {
-    return res.status(500).json({ error: "error message" });
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -73,6 +73,6 @@ export const deleteCars = async (req: Request, res: Response) => {
       res.status(404).json({ message: 'Car not found' });
     }
   } catch (error) {
-    res.status(500).json({ error: "error message" });
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };

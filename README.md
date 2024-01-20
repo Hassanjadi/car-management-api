@@ -12,7 +12,7 @@
 - [X] Membuat database dengan menggunakan SQL hingga melakukan CRUD data
 - [X] Mampu menerapkan Service Repository Pattern di dalam sebuah Project
 - [X] Mampu membuat asynchronous function dan menjalankannya
-- [ ] Mampu menerapkan Token Based Authentication sebagai metode autentikasi di dalam REST API
+- [X] Mampu menerapkan Token Based Authentication sebagai metode autentikasi di dalam REST API
 - [ ] Mampu membuat Open API Documentation dari REST API yang akan dibuat
 - [X] Menggunakan TypeScript sebagai bahasa pemrograman
 

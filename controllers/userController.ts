@@ -1,6 +1,6 @@
+import userService from '../services/userServices';
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import userService from '../services/userServices';
 
 export const getAllUser = async (req: Request, res: Response) => {
   try {

@@ -1,4 +1,4 @@
-import { carModel } from '../models/carModel'
+import { Cars, carModel } from '../models/carModel'
 
 class carRepository {
     getAllCars() {
@@ -9,7 +9,7 @@ class carRepository {
         return carModel.query().findById(id)
     }
 
-    createCars(carData: Partial<carModel>) {
+    createCars(carData: Partial<Cars>) {
         return carModel.query().insert(carData);
     }
 

@@ -2,9 +2,9 @@ import carRoutes from './routes/carRoutes';
 import userRoutes from './routes/userRoutes';
 import { Model } from "objection";
 import express  from 'express';
+import dotenv from 'dotenv';
 import cors from 'cors';
 import knex from 'knex';
-import dotenv from 'dotenv';
 
 const app = express();
 const PORT = process.env.PORT || 3000;

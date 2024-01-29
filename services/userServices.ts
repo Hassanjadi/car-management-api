@@ -1,5 +1,5 @@
-import bcrypt from 'bcrypt';
 import UserRepository from '../repositories/userRepository';
+import bcrypt from 'bcrypt';
 
 class userService {
   async getAllUser() {

@@ -1,5 +1,5 @@
 import carRepository from "../repositories/carRepository";
-import { carModel } from "../models/carModel";
+import { carModel, Cars } from "../models/carModel";
 
 class carService {
     getAllCars() {
@@ -10,7 +10,7 @@ class carService {
         return carRepository.getCarsById(id);
     }
 
-    createCars(carData: Partial<carModel>) {
+    createCars(carData: Partial<Cars>) {
         return carRepository.createCars(carData);
     }
 

@@ -18,7 +18,9 @@ export class carModel extends Model {
     specs!: string[];
     createdBy!: string;
     updatedBy!: string;
-    deletedBy!: string;
+    deletedBy: string | null = null;
+    createdAt!: Date;
+    updatedAt!: Date;
 
     static get tableName() {
         return 'car';

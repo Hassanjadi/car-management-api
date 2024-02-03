@@ -20,4 +20,5 @@ router.get('/api/v1/user', getAllUser);
 router.post('/api/v1/admin', isSuperadmin, register);
 // Current User
 router.get('/api/v1/who-am-i', verifyToken, whoAmI);
+
 export default router;

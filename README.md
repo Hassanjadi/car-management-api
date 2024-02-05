@@ -40,13 +40,13 @@ Make sure you have installed the following software before getting started:
 1. **Clone the Repository**
 
    ```
-   git clone https://github.com/hassanjadi/car-management-api.git
+   git clone https://github.com/Hassanjadi/car-management-api
    ```
 
 2. **Navigate to the Project Directory**
 
    ```
-   cd project-repo
+   cd car-management-api
    ```
 
 3. **Install Dependencies**

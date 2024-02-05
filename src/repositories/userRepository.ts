@@ -1,4 +1,4 @@
-import { userModel, User } from '../models/userModels'
+import { userModel, User } from "../models/userModels";
 
 class userRepository {
   getAllUser() {

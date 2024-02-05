@@ -1,0 +1,42 @@
+import { Knex } from "knex";
+
+export async function seed(knex: Knex): Promise<void> {
+  // Deletes ALL existing entries
+  await knex("car").del();
+
+  // Inserts seed entries
+  await knex("car").insert([
+    {
+      id: "6e2bc663-5197-441a-957b-bc75e4a2da7c",
+      plate: "DBH-3491",
+      manufacture: "Ford",
+      model: "F150",
+      image: "./images/car01.min.jpg",
+      rentPerDay: 200000,
+      capacity: 2,
+      description:
+        " Brake assist. Leather-wrapped shift knob. Glove box lamp. Air conditioning w/in-cabin microfilter.",
+      availableAt: "2022-03-23T15:49:05.563Z",
+      transmission: "Automatic",
+      available: true,
+      type: "Sedan",
+      year: 2022,
+      options: [
+        "Cruise Control",
+        "Tinted Glass",
+        "Tinted Glass",
+        "Tinted Glass",
+        "AM/FM Stereo",
+      ],
+      specs: [
+        "Brake assist",
+        "Leather-wrapped shift knob",
+        "Glove box lamp",
+        "Air conditioning w/in-cabin microfilter",
+        "Body color folding remote-controlled pwr mirrors",
+        "Dual-stage front airbags w/occupant classification system",
+      ],
+      createdBy: "8a58020e-f58e-45a5-a6e6-2d4f05704563",
+    },
+  ]);
+}

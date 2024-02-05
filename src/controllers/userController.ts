@@ -1,7 +1,6 @@
 import userService from "../services/userServices";
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import jwtConfig from "../utils/jwt";
 
 export const getAllUser = async (req: Request, res: Response) => {
   try {
@@ -29,13 +28,10 @@ export const login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
     const user = await userService.login(email, password);
 
-    const token = jwt.sign(
-      { userId: user.id, role: user.role },
-      jwtConfig.secretKey,
-      {
-        expiresIn: jwtConfig.expiresIn,
-      }
-    );
+    const secretKey = process.env.JWT_SECRET || "default_secret_key";
+    const token = jwt.sign({ userId: user.id, role: user.role }, secretKey, {
+      expiresIn: "1h",
+    });
 
     return res.json({ user, token });
   } catch (error) {

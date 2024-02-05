@@ -1,7 +1,7 @@
-import carService from '../services/carServices'
-import { Request, Response } from 'express';
-import { User } from '../models/userModels';
-import path from 'path';
+import carService from "../services/carServices";
+import { Request, Response } from "express";
+import { User } from "../models/userModels";
+import path from "path";
 
 declare global {
   namespace Express {
@@ -26,7 +26,7 @@ export const getCarsById = async (req: Request, res: Response) => {
     if (car) {
       res.json(car);
     } else {
-      res.status(404).json({ message: 'Car not found' });
+      res.status(404).json({ message: "Car not found" });
     }
   } catch (error) {
     console.error(error);
@@ -37,14 +37,14 @@ export const getCarsById = async (req: Request, res: Response) => {
 export const createCars = async (req: Request, res: Response) => {
   try {
     if (!req.file) {
-      return res.status(400).json({ message: 'No file uploaded' });
+      return res.status(400).json({ message: "No file uploaded" });
     }
 
-    const imagePath = path.join('/images', req.file.filename);
+    const imagePath = path.join("/images", req.file.filename);
     const userId = req.user?.id;
 
     if (!userId) {
-      return res.status(401).json({ message: 'Unauthorized' });
+      return res.status(401).json({ message: "Unauthorized" });
     }
 
     const carData = { ...req.body, image: imagePath, createdBy: userId };
@@ -52,25 +52,24 @@ export const createCars = async (req: Request, res: Response) => {
     const car = await carService.createCars(carData);
     return res.status(201).json(car);
   } catch (error) {
-    console.error(error)
+    console.error(error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
-
 export const updateCars = async (req: Request, res: Response) => {
   try {
-    const carId = req.params.id ;
+    const carId = req.params.id;
 
     if (!req.file) {
-      return res.status(400).json({ error: 'No file uploaded' });
+      return res.status(400).json({ error: "No file uploaded" });
     }
 
-    const imagePath = path.join('/images', req.file.filename);
+    const imagePath = path.join("/images", req.file.filename);
     const userId = req.user?.id;
 
     if (!userId) {
-      return res.status(401).json({ message: 'Unauthorized' });
+      return res.status(401).json({ message: "Unauthorized" });
     }
 
     const carData = { ...req.body, image: imagePath, updatedBy: userId };
@@ -80,11 +79,11 @@ export const updateCars = async (req: Request, res: Response) => {
     if (updatedCar) {
       return res.json(updatedCar);
     } else {
-      return res.status(404).json({ message: 'Car not found' });
+      return res.status(404).json({ message: "Car not found" });
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -94,9 +93,9 @@ export const deleteCars = async (req: Request, res: Response) => {
 
     const car = await carService.deleteCars(req.params.id);
     if (car) {
-      res.json({ message: 'Car deleted successfully by user: ' + userId });
+      res.json({ message: "Car deleted successfully by user: " + userId });
     } else {
-      res.status(404).json({ message: 'Car not found' });
+      res.status(404).json({ message: "Car not found" });
     }
   } catch (error) {
     console.error(error);

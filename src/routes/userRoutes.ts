@@ -1,24 +1,17 @@
-import { isSuperadmin } from "../middleware/isSuperadmin";
-import { verifyToken } from "../middleware/verifyToken";
-import express from "express";
-import {
-  register,
-  login,
-  whoAmI,
-  getAllUser,
-} from "../controllers/userController";
+import express, { Router } from 'express'
+import { verifyToken } from '../middleware/verifyToken'
+import { isSuperadmin } from '../middleware/isSuperadmin'
+import { register, login, whoAmI, getAllUser } from '../controllers/userController'
 
-const router = express.Router();
+export const UserRouter: Router = Router()
 
 // Register Member
-router.post("/api/v1/register", register);
+UserRouter.post('/v1/auth/register', register)
 // Login member, admin, superadmin
-router.post("/api/v1/login", login);
+UserRouter.post('/v1/auth/login', login)
 // Get all user member, admin, superadmin
-router.get("/api/v1/user", getAllUser);
+UserRouter.get('/v1/user', getAllUser)
 // Adding admin
-router.post("/api/v1/admin", isSuperadmin, register);
+UserRouter.post('/v1/admin', isSuperadmin, register)
 // Current User
-router.get("/api/v1/who-am-i", verifyToken, whoAmI);
-
-export default router;
+UserRouter.get('/v1/whoami', verifyToken, whoAmI)

@@ -1,21 +1,13 @@
-import { authorize } from "../middleware/authorize";
-import upload from "../utils/upload";
-import express from "express";
-import {
-  getAllCars,
-  getCarsById,
-  createCars,
-  updateCars,
-  deleteCars,
-} from "../controllers/carController";
+import express, { Router } from 'express'
+import upload from '../utils/upload'
+import { authorize } from '../middleware/authorize'
+import { getAllCars, getCarsById, createCars, updateCars, deleteCars } from '../controllers/carController'
 
-const router = express.Router();
+export const CarRouter: Router = Router()
 
 // Router car
-router.get("/api/v1/cars", getAllCars);
-router.get("/api/v1/cars/:id", authorize, getCarsById);
-router.post("/api/v1/cars", authorize, upload.single("image"), createCars);
-router.put("/api/v1/cars/:id", authorize, upload.single("image"), updateCars);
-router.delete("/api/v1/cars/:id", authorize, deleteCars);
-
-export default router;
+CarRouter.get('/v1/cars', getAllCars)
+CarRouter.get('/v1/cars/:id', getCarsById)
+CarRouter.post('/v1/cars', authorize, upload.single('image'), createCars)
+CarRouter.put('/v1/cars/:id', authorize, upload.single('image'), updateCars)
+CarRouter.delete('/v1/cars/:id', authorize, deleteCars)

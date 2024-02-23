@@ -1,28 +1,37 @@
-import { Model } from "objection";
-import express from "express";
-import cors from "cors";
-import swaggerUi from "swagger-ui-express";
-import carRoutes from "./routes/carRoutes";
-import userRoutes from "./routes/userRoutes";
-import specs from "./utils/swagger";
-import knexInstance from "./utils/knex";
-import bodyParser from "body-parser";
+import express, { Application } from 'express'
+import swaggerUi from 'swagger-ui-express'
+import { logger } from './utils/logger'
+import knexInstance from './utils/knex'
+import bodyParser from 'body-parser'
+import specs from './utils/swagger'
+import { Model } from 'objection'
+import { routes } from './routes'
+import cors from 'cors'
 
-const app = express();
-const PORT = 3000;
+const app: Application = express()
+const port: number = 3001
 
-Model.knex(knexInstance);
+// instance knex
+Model.knex(knexInstance)
 
-app.use("/api/v1/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
-app.use(bodyParser.json());
-app.use(express.json());
-app.use(cors());
-app.use(carRoutes);
-app.use(userRoutes);
+// parse body request
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-app.listen(PORT, () => {
-  console.log(`⚡️ Server listening on url http://localhost:${PORT}`);
-  console.log(
-    `⚡️ Swagger access on url http://localhost:${PORT}/api/v1/api-docs`
-  );
-});
+// cors access handler
+app.use(cors())
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', '*')
+  res.setHeader('Access-Control-Allow-Headers', '*')
+  next()
+})
+
+// documentation swagger
+app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
+
+routes(app)
+
+app.listen(port, () => {
+  logger.info(`Server is listening on url http://localhost:${port}`)
+})

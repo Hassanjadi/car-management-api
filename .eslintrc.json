@@ -1,17 +1,17 @@
 {
     "env": {
         "browser": true,
-        "commonjs": true,
-        "es2021": true
+        "es2021": true,
+        "node": true
     },
     "extends": "standard-with-typescript",
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": "latest"
+        "ecmaVersion": "latest",
+        "sourceType": "module"
     },
+    "plugins": ["@typescript-eslint"],
+    "ignorePAtterns": ["**/dist/*", "**/public/*"],
     "rules": {
-        "@typescript-eslint/explicit-function-return-type": "error",
-        "semi": "off",
-        "@typescript-eslint/strict-boolean-expressions": 0,
-        "@typescript-eslint/no-misused-promises": 0
     }
 }

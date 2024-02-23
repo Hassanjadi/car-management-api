@@ -12,7 +12,7 @@ import {
 const router = express.Router();
 
 // Router car
-router.get("/api/v1/cars", authorize, getAllCars);
+router.get("/api/v1/cars", getAllCars);
 router.get("/api/v1/cars/:id", authorize, getCarsById);
 router.post("/api/v1/cars", authorize, upload.single("image"), createCars);
 router.put("/api/v1/cars/:id", authorize, upload.single("image"), updateCars);

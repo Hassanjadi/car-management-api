@@ -1,26 +1,26 @@
-import carRepository from "../repositories/carRepository";
-import { carModel, Cars } from "../models/carModel";
+import carRepository from '../repositories/carRepository'
+import { CarModels } from '../models/carModel'
 
 class carService {
   getAllCars() {
-    return carRepository.getAllCars();
+    return carRepository.getAllCars()
   }
 
   getCarsById(id: string) {
-    return carRepository.getCarsById(id);
+    return carRepository.getCarsById(id)
   }
 
-  createCars(carData: Partial<Cars>) {
-    return carRepository.createCars(carData);
+  createCars(cars: CarModels) {
+    return carRepository.createCars(cars)
   }
 
-  updateCars(id: string, carData: Partial<carModel>) {
-    return carRepository.updateCars(id, carData);
+  updateCars(id: string, cars: CarModels) {
+    return carRepository.updateCars(id, cars)
   }
 
   deleteCars(id: string) {
-    return carRepository.deleteCars(id);
+    return carRepository.deleteCars(id)
   }
 }
 
-export default new carService();
+export default new carService()

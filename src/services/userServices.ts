@@ -1,32 +1,18 @@
-import UserRepository from '../repositories/userRepository';
-import bcrypt from 'bcrypt';
+import { UserModels } from '../models/userModels'
+import userRepository from '../repositories/userRepository'
 
 class userService {
-  async getAllUser() {
-    return UserRepository.getAllUser();
+  getAllUser() {
+    return userRepository.getAllUser()
   }
 
-  async register(username: string, email: string, password: string, role: string = 'Member') {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const userData = { username, email, password: hashedPassword, role };
-
-    const user = await UserRepository.createUser(userData);
-    return user;
+  register(users: UserModels) {
+    return userRepository.createUser(users)
   }
 
-  async login(email: string, password: string) {
-    const user = await UserRepository.getUserByEmail(email);
-    if (!user) {
-      throw new Error('Invalid email or password');
-    }
-
-    const passwordMatch = await bcrypt.compare(password, user.password);
-    if (!passwordMatch) {
-      throw new Error('Invalid email or password');
-    }
-
-    return user;
+  login(email: string) {
+    return userRepository.getUserByEmail(email)
   }
 }
 
-export default new userService;
+export default new userService()

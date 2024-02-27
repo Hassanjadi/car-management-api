@@ -1,17 +1,15 @@
-import express, { Router } from 'express'
-import { verifyToken } from '../middleware/verifyToken'
-import { isSuperadmin } from '../middleware/isSuperadmin'
-import { register, login, whoAmI, getAllUser } from '../controllers/userController'
+import { Router } from 'express'
+import { getAllUser, registerUser, createSession, refreshSession, whoAmI } from '../controllers/userController'
+import { requireSuperadmin, requireUser } from '../middleware/auth'
 
 export const UserRouter: Router = Router()
 
-// Register Member
-UserRouter.post('/v1/auth/register', register)
-// Login member, admin, superadmin
-UserRouter.post('/v1/auth/login', login)
-// Get all user member, admin, superadmin
+// router auth
+UserRouter.post('/v1/auth/register', registerUser)
+UserRouter.post('/v1/auth/login', createSession)
+UserRouter.post('/v1/auth/refresh', refreshSession)
+
+// router user
 UserRouter.get('/v1/user', getAllUser)
-// Adding admin
-UserRouter.post('/v1/admin', isSuperadmin, register)
-// Current User
-UserRouter.get('/v1/whoami', verifyToken, whoAmI)
+UserRouter.post('/v1/admin', requireSuperadmin, registerUser)
+UserRouter.get('/v1/whoami', requireUser, whoAmI)

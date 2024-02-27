@@ -8,7 +8,7 @@ export class UserModel extends Model {
   role!: string
 
   static get tableName() {
-    return 'user'
+    return 'users'
   }
 }
 

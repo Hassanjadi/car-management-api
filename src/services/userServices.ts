@@ -1,4 +1,4 @@
-import { UserModels } from '../models/userModels'
+import UserType from '../types/userType'
 import userRepository from '../repositories/userRepository'
 
 class userService {
@@ -6,11 +6,11 @@ class userService {
     return userRepository.getAllUser()
   }
 
-  register(users: UserModels) {
+  createUser(users: UserType) {
     return userRepository.createUser(users)
   }
 
-  login(email: string) {
+  findUserByEmail(email: string) {
     return userRepository.getUserByEmail(email)
   }
 }

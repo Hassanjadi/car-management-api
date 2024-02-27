@@ -23,7 +23,7 @@ export class CarModel extends Model {
   updatedAt!: Date
 
   static get tableName() {
-    return 'car'
+    return 'cars'
   }
 }
 

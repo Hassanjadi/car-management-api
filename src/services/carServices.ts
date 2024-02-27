@@ -1,5 +1,5 @@
 import carRepository from '../repositories/carRepository'
-import { CarModels } from '../models/carModel'
+import CarType from '../types/carType'
 
 class carService {
   getAllCars() {
@@ -10,11 +10,11 @@ class carService {
     return carRepository.getCarsById(id)
   }
 
-  createCars(cars: CarModels) {
+  createCars(cars: CarType) {
     return carRepository.createCars(cars)
   }
 
-  updateCars(id: string, cars: CarModels) {
+  updateCars(id: string, cars: CarType) {
     return carRepository.updateCars(id, cars)
   }
 

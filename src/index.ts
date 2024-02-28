@@ -42,5 +42,5 @@ app.use('/v1/docs', swaggerUi.serve, swaggerUi.setup(specs))
 routes(app)
 
 app.listen(port, '0.0.0.0', () => {
-  logger.info(`Server is listening on url http://localhost:${port}`)
+  logger.info(`Server is listening on port ${port}`)
 })

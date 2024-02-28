@@ -7,11 +7,7 @@ dotenv.config()
 const config: { [key: string]: Knex.Config } = {
   development: {
     client: 'postgresql',
-    connection: {
-      database: process.env.DB_NAME as string,
-      user: process.env.DB_USER as string,
-      password: process.env.DB_PASSWORD as string
-    },
+    connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
       max: 10
@@ -27,11 +23,7 @@ const config: { [key: string]: Knex.Config } = {
 
   production: {
     client: 'postgresql',
-    connection: {
-      database: process.env.DB_NAME as string,
-      user: process.env.DB_USER as string,
-      password: process.env.DB_PASSWORD as string
-    },
+    connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
       max: 10

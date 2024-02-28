@@ -9,6 +9,7 @@ import { signJWT, verifyJWT } from '../utils/jwt'
 export const getAllUser = async (req: Request, res: Response) => {
   try {
     const user = await userService.getAllUser()
+    logger.info('Success get user data')
     res.status(200).send({ status: true, statusCode: 200, message: 'Get data users success', data: user })
   } catch (error) {
     logger.error('ERR: user - get all user =', error)

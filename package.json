@@ -4,9 +4,9 @@
   "description": "REST API that can be used to manage car data with authentication features",
   "main": "index.js",
   "scripts": {
-    "start": "npx tsc -w",
+    "build": "npx tsc",
+    "start": "node build/index.js",
     "dev": "npx nodemon",
-    "build": "tsc",
     "lint": "eslint ./",
     "format": "prettier --write .",
     "migrate": "npx knex migrate:latest",

@@ -1,4 +1,5 @@
 import { Model, ModelObject } from 'objection'
+import { UserModel } from './userModels'
 
 export class CarModel extends Model {
   id!: string
@@ -24,6 +25,35 @@ export class CarModel extends Model {
 
   static get tableName() {
     return 'cars'
+  }
+
+  static get relationMappings() {
+    return {
+      createdBy: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: UserModel,
+        join: {
+          from: 'cars.createdBy',
+          to: 'users.id'
+        }
+      },
+      updatedBy: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: UserModel,
+        join: {
+          from: 'cars.updatedBy',
+          to: 'users.id'
+        }
+      },
+      deletedBy: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: UserModel,
+        join: {
+          from: 'cars.deletedBy',
+          to: 'users.id'
+        }
+      }
+    }
   }
 }
 

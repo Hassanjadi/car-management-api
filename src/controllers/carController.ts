@@ -28,7 +28,7 @@ export const createCars = async (req: Request, res: Response) => {
       return res.status(400).send({ status: false, statusCode: 400, message: 'No file uploaded' })
     }
 
-    const image = `./image/${req.file.filename}`
+    const image = `./images/${req.file.filename}`
     const user = res.locals.user.id
 
     const cars = { ...req.body, image: image, createdBy: user }

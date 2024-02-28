@@ -13,7 +13,7 @@ import cors from 'cors'
 dotenv.config()
 
 const app: Application = express()
-const port = process.env.PORT || 3000
+const port: number = 3000
 
 // instance knex
 Model.knex(knexInstance)
@@ -41,6 +41,6 @@ app.use('/v1/docs', swaggerUi.serve, swaggerUi.setup(specs))
 
 routes(app)
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   logger.info(`Server is listening on url http://localhost:${port}`)
 })

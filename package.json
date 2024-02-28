@@ -7,11 +7,10 @@
     "build": "npx tsc",
     "start": "node build/index.js",
     "dev": "npx nodemon",
-    "lint": "eslint ./",
-    "format": "prettier --write .",
-    "compose": "docker compose up -d",
     "migrate": "npx knex migrate:latest",
-    "seed": "npx knex seed:run"
+    "seed": "npx knex seed:run",
+    "lint": "eslint ./",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "Hassan Jadi",

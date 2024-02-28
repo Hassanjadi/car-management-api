@@ -9,6 +9,7 @@
     "dev": "npx nodemon",
     "lint": "eslint ./",
     "format": "prettier --write .",
+    "compose": "docker compose up -d",
     "migrate": "npx knex migrate:latest",
     "seed": "npx knex seed:run"
   },

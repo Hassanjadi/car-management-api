@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 app.use(deserializeToken)
 
 // documentation swagger
-app.use('/v1/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
+app.use('/v1/docs', swaggerUi.serve, swaggerUi.setup(specs))
 
 routes(app)
 

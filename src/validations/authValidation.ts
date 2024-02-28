@@ -1,5 +1,5 @@
-import Joi from 'joi'
 import UserType from '../types/userType'
+import Joi from 'joi'
 
 export const createUserValidation = (payload: UserType) => {
   const schema = Joi.object({

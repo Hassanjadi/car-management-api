@@ -1,10 +1,10 @@
-import userService from '../services/userServices'
-import { Request, Response } from 'express'
 import { createUserValidation, createSessionValidation, refreshSessionValidation } from '../validations/authValidation'
-import { v4 as uuidv4 } from 'uuid'
-import { logger } from '../utils/logger'
 import { checkPassword, hashing } from '../utils/hashing'
+import userService from '../services/userServices'
 import { signJWT, verifyJWT } from '../utils/jwt'
+import { Request, Response } from 'express'
+import { logger } from '../utils/logger'
+import { v4 as uuidv4 } from 'uuid'
 
 export const getAllUser = async (req: Request, res: Response) => {
   try {

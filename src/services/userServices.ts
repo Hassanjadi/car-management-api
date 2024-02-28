@@ -1,5 +1,5 @@
-import UserType from '../types/userType'
 import userRepository from '../repositories/userRepository'
+import UserType from '../types/userType'
 
 class userService {
   getAllUser() {

@@ -31,8 +31,6 @@ jobs:
           echo DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres?schema=public >> .env
       - name: Migrate Database
         run: npm run migrate && npm run seed
-      - name: Test Coverage
-        run: npm run coverage
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only
         env:

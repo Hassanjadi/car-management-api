@@ -7,8 +7,7 @@ const knexInstance = knex({
   connection: {
     host: process.env.DB_HOST as string,
     user: process.env.DB_USER as string,
-    password: process.env.DB_PASSWORD as string,
-    port: process.env.DB_PORT as unknown as number
+    password: process.env.DB_PASSWORD as string
   },
   pool: {
     min: 2,

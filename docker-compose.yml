@@ -2,20 +2,20 @@ version: '3.8'
 
 services:
   database:
-    container_name: database
     image: postgres:latest
+    container_name: database
     restart: always
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    ports:
-      - '5432:5432'
-    healthcheck:
-      test: ['CMD', 'pg_isready', '-U', 'postgres']
     environment:
       POSTGRES_HOST: localhost
+      POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_PORT: 5432
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', 'postgres']
 
 volumes:
   pgdata:
